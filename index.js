@@ -6,9 +6,6 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 app.get("/", (req, res) => {
   res.send("Hello world");
@@ -47,8 +44,10 @@ app.get("/", (req, res) => {
 
 const endpointSecret = "whsec_l6KM4PYwQepYcWODmSiw4MoazhFcyWTK";
 
-const EMAIL = "noo2rulain@gmail.com";
-const PASS = "Siddiqui786";
+// const EMAIL = "noorulainsiddiqui88@gmail.com";
+// const EMAIL = "noorsiddiqui011@hotmail.com";
+const EMAIL = "noor1@yopmail.com";
+const PASS = "Everafter1";
 
 app.post(
   "/webhooks",
@@ -80,12 +79,15 @@ app.post(
         let emailto = checkoutSessionCompleted.customer_details.email;
 
         const transporter = nodemailer.createTransport({
-          host: "smtp.gmail.com",
+          //   host: "smtp.gmail.com",
+          host: "smtp.ethereal.email",
           port: 587,
-          secure: false, // Use `true` for port 465, `false` for all other ports
           auth: {
-            user: process.env.email,
-            pass: process.env.password,
+            user: "ricardo39@ethereal.email",
+            pass: "ahsqHn8DS41CXgGR7B",
+          },
+          tls: {
+            rejectUnauthorized: false,
           },
         });
 
@@ -93,7 +95,7 @@ app.post(
         async function main() {
           // send mail with defined transport object
           const info = await transporter.sendMail({
-            from: process.env.email, // sender address
+            from: "ricardo39@ethereal.email", // sender address
             to: emailto, // list of receivers
             subject: "Thanks for the Payment of the Product", // Subject line
             text: "Thanks for the Payment of the Product", // plain text body
